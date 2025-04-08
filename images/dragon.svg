@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+  <!-- Dragon head base -->
+  <path d="M100 50 Q75 40, 60 70 Q45 90, 50 110 Q70 130, 100 120 Q130 130, 150 110 Q155 90, 140 70 Q125 40, 100 50 Z" fill="#2E8B57" />
+
+  <!-- Eyes -->
+  <ellipse cx="80" cy="80" rx="5" ry="10" fill="#000" />
+  <ellipse cx="120" cy="80" rx="5" ry="10" fill="#000" />
+
+  <!-- Horns -->
+  <path d="M75 45 Q60 25, 80 50" stroke="#8B0000" stroke-width="3" fill="none" />
+  <path d="M125 45 Q140 25, 120 50" stroke="#8B0000" stroke-width="3" fill="none" />
+
+  <!-- Mouth -->
+  <path d="M80 110 Q100 115, 120 110" stroke="#000" fill="transparent" stroke-width="2" />
+
+  <!-- Teeth -->
+  <path d="M85 105 L88 110 M92 106 L95 110 M105 106 L108 110 M115 105 L118 110" stroke="#FFFFFF" stroke-width="2" />
+
+  <!-- Nostrils -->
+  <circle cx="90" cy="95" r="3" fill="#000" />
+  <circle cx="110" cy="95" r="3" fill="#000" />
+</svg>

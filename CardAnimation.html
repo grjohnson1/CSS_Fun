@@ -1,0 +1,148 @@
+<html>
+    <head>
+        <title>Fun card animation</title>
+        <style>
+            @property --gradient-angle {
+                syntax: "<angle>";
+                initial-value: 0turn;
+                inherits: false;
+            }
+
+            .card {
+                animation: 2s gradient-angle infinite linear;
+                border: 2px solid transparent;
+                background-image: linear-gradient(#610661, #810e81),
+                    conic-gradient(
+                    from var(--gradient-angle),
+                    #800080 0%,
+                    #d368d3 37%,
+                    #f3ccf3 30%,
+                    #d368d3 33%,
+                    #800080 40%,
+                    #800080 50%,
+                    #d368d3 77%,
+                    #f3ccf3 80%,
+                    #d368d3 83%,
+                    #800080 90%
+                );
+                background-clip: padding-box, border-box;
+                background-origin: padding-box, border-box;
+            }
+
+            @keyframes gradient-angle {
+                to {
+                    --gradient-angle: 1turn;
+                }
+            }
+
+            html,
+            body {
+                background: #141819;
+            }
+
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+                line-height: 1.6;
+                display: grid;
+                align-content: center;
+                min-height: 100svh;
+                padding: 24px;
+                color: #d5cec0;
+                gap: 24px;
+
+                @media (width < 970px) {
+                    align-content: start;
+                }
+            }
+
+            .container {
+                display: grid;
+                justify-content: center;
+                margin-inline: auto;
+                grid-auto-flow: column;
+                gap: 16px 40px;
+
+                @media (width < 970px) {
+                    grid-auto-flow: row;
+                }
+            }
+
+            .card {
+                display: grid;
+                max-width: 240px;
+                padding: 20px;
+                text-decoration: none;
+                color: currentColor;
+                border-radius: 20px;
+                place-content: center;
+                place-items: center;
+                aspect-ratio: 1/1;
+                row-gap: 16px;
+            }
+
+            .card h2 {
+                font-family: "Comfortaa", sans-serif;
+                font-size: 18px;
+                font-weight: 700;
+                font-style: normal;
+                font-optical-sizing: auto;
+            }
+
+            .card p {
+                font-size: 12px;
+            }
+            .card p.toggle {
+                display: none;
+            }
+            .card p.toggle.active {
+                display: block;
+            }
+
+            .nav {
+                font: 700 1em "Comfortaa", sans-serif;
+                color: #FFF;
+                text-decoration: none;
+            }
+            .nav:hover {
+                text-decoration: underline;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <a class="card" href="#">
+              <img alt="Dragon Head" src="images/dragon.svg" width="200" height="200" />
+              <h2>Dragon</h2>
+              <p>
+                The <strong>Chinese zodiac Dragon</strong> is the fifth animal in the zodiac cycle and symbolizes <strong>strength, confidence, and good fortune</strong>.
+              </p>
+              <p class="toggle">
+                People born in the Year of the Dragon are often described as <strong>charismatic, ambitious, and innovative</strong>. 
+                The Dragon is also seen as a symbol of authority and is associated with positive traits such as being <strong>powerful, kind-hearted, and courageous</strong>. 
+                In Chinese culture, dragons are revered and considered auspicious, representing nobility and luck.
+              </p>
+            </a>
+            <a class="card" href="#">
+                <img alt="Monkey Head" src="images/monkey.svg" width="200" height="200" />
+                <h2>Monkey</h2>
+                <p>
+                    The <strong>Chinese zodiac Monkey</strong> is the ninth animal in the zodiac cycle and symbolizes <strong>intelligence, adaptability, and innovative</strong>.
+                </p>
+                <p class="toggle">
+                    People born in the Year of the Monkey are often described as <strong>quick-witted, curious, and social</strong>.
+                    The Monkey is also seen as a symbol of playfulness with positive traits such as being <strong>entertainers, charismatic, and resourceful</strong>.
+                    In Chinese culture, monkeys are seen as curious individuals that bring wisdom, agility, and good luck. 
+                </p>
+              </a>
+        </div>
+        <a href="Index.html" class="nav">&#8592; CSS Fun Home Page</a>
+    </body>
+    <script>
+        var card = document.getElementsByClassName("card");
+        for (i = 0; i < card.length; i++) {
+          card[i].addEventListener("click", function() {
+            this.getElementsByClassName("toggle")[0].classList.toggle("active");
+          });
+        }
+    </script>
+</html>
