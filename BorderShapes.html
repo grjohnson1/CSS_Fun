@@ -1,0 +1,203 @@
+<html>
+    <head>
+        <title>Border Shapes in CSS</title>
+        <style>
+            section {
+                display: flex;
+                padding-bottom: 15px;
+            }
+            @property --k1val {
+                syntax: "<number>";
+                initial-value: 0;
+                inherits: false;
+            }
+            @property --k2val {
+                syntax: "<number>";
+                initial-value: 0;
+                inherits: false;
+            }
+            .foo {
+                --kval: 0;
+                --br: 50%;
+                --cs: superellipse(var(--kval));
+                border-radius: var(--br);
+                corner-shape: var(--cs);
+                box-sizing: border-box;
+                border: 1vmin solid #ff9f33;
+                margin-right: 15px;
+            }
+            .wrap {
+                word-break: break-word;
+                hyphens: auto;
+                padding: 3vmin;
+            }
+            .arrow {
+                --cs: bevel bevel notch notch;
+                --br: 50% 50% 20% 20%/50%;
+            }
+            .star {
+                --kval: -1;
+            }
+            .squircle  {
+                --br: 100%;
+                --cs: squircle;
+            }
+            .bsquircle  {
+                --kval: 1.3;
+            }
+            .ppl {
+                --br: 25% 0% / calc(100% - 1vmin) 0%;
+            }
+            .ppl.lt {
+                    --br: 0% 25% / 0% calc(100% - 1vmin);
+                }
+            }
+            .ntch {
+                --cs: notch;
+                --br: 10%;
+            }
+            .scp {
+                --cs: scoop;
+                --br: 10%;
+            }
+            .ign {
+                --cs: square;
+            }
+            .hg {
+                --cs: bevel notch
+            }
+            .hexg {
+                --br: 25% / 50%;
+            }
+            .octg {
+                --br: 28% / 28%;
+            }
+            .oval {
+                --br: 35% 80% / 30% 80%;
+                --cs: superellipse(1) superellipse(.8);
+            }
+            .mess1 {
+                --cs: superellipse(1) scoop;
+            }
+            .mess2 {
+                --br: 10% 10% 15% 15%/ 30% 30% 50% 50%;
+                --cs: notch;
+            }
+            .mess3 {
+                --cs: superellipse(-2.5) superellipse(.8);
+            }
+            .mess4 {
+                --cs: square notch;
+                border-color: #E23636 #B8AFE6 #043458 #ffe681;
+            }
+            .but {
+                --br: 50%;
+                --cs: superellipse(var(--k1val)) superellipse(var(--k2val));
+                animation: bufly 5s ease-in-out infinite alternate;
+            }
+            .wg {
+                --br: 60%;
+                --cs:  round superellipse(.8) superellipse(.8) round
+            }
+            .plus {
+                --br: 35%;
+                --cs: notch;
+            }
+            @keyframes bufly {
+                from {
+                    border-color: #f5ddc5;
+                    --k1val: 1.5;
+                    --k2val: .8;
+                }
+                to {
+                    background-color:  #aee1cd;
+                    border-color: #ffe681;
+                    --k1val: -.8;
+                    --k2val: -2.5;
+                }
+            }
+            .foo {
+                width: 15vmin;
+                height: 15vmin;
+                display: grid;
+                place-content: center;
+                font-size: 3vmin;
+                text-align: center;
+                background: #F9F3EE;
+                text-shadow: 0 0 .2em #fff;
+                font-weight: 700;
+            }
+            .text {
+                padding: 1em;
+                margin-block: 1em;
+                grid-column: 1 / -1;
+                background: #ebebe3;
+                border-radius: .3em;
+            }
+            @supports (not(corner-shape: superellipse(1.5))) {
+                .text .yes {
+                    display: none;
+                }
+            }
+            @supports (corner-shape: superellipse(1.5)) {
+                .text .no {
+                    display: none;
+                }
+            }
+            body {
+                font-family: system-ui, sans-serif;
+                margin: 0;
+                display: grid;
+                place-content: center;
+                place-items: center;
+                min-height: 100vh;
+                gap: 1em;
+                background: 
+                    radial-gradient(farthest-side at -33.33% 50%,#0000 52%,#800080 54% 57%,#0000 59%) 0 calc(116px/2),
+                    radial-gradient(farthest-side at 50% 133.33%,#0000 52%,#800080 54% 57%,#0000 59%) calc(116px/2) 0,
+                    radial-gradient(farthest-side at 133.33% 50%,#0000 52%,#800080 54% 57%,#0000 59%),
+                    radial-gradient(farthest-side at 50% -33.33%,#0000 52%,#800080 54% 57%,#0000 59%),
+                    #f3ccf3;
+                background-size: calc(116px/4.667) 116px,116px calc(116px/4.667);
+            }
+            h1 {
+                color:#800080;
+            }
+        </style>
+    </head>
+    <body>
+        <h1><span class="text">Border Shapes</span></h1>
+        <p class="text">Brought to life by Amit from CodePen: <a href="https://codepen.io/ghaste/pen/azOjpxr">CSS Shapes using border module 4</a>.</p>
+        <parallelogram class="text">
+            This is an experimental feature, this 
+            <span class="no">does not work </span>
+            <span class="yes">works </span>
+|             on your browser, I built this on canary with the flags enabled.
+        </parallelogram>
+        <section>          
+            <div class="foo rombus">rombus</div> 
+            <div class="foo arrow">arrow</div> 
+            <div class="foo star">star</div> 
+            <div class="foo squircle">default squircle</div> 
+            <div class="foo bsquircle"> better squircle</div> 
+            <div class="foo ppl wrap">parallelogram</div> 
+            <div class="foo ppl lt wrap">parallelogram</div> 
+            <div class="foo ntch">Notched</div> 
+            <div class="foo scp">Scooped</div> 
+            <div class="foo ign">ignore radius</div> 
+            <div class="foo hg">Hourglass</div>
+        </section>
+        <section>
+            <div class="foo hexg">Hexagon</div> 
+            <div class="foo octg">Octagon</div> 
+            <div class="foo oval">oval</div> 
+            <div class="foo mess1">scooper</div> 
+            <div class="foo mess2 wrap">Frankenstein</div> 
+            <div class="foo mess3">Butterfly</div> 
+            <div class="foo but">Experimental</div>
+            <div class="foo mess4">Checkers</div> 
+            <div class="foo wg">Waning gibbous</div> 
+            <div class="foo plus">Plus</div> 
+        </section>
+    </body>
+</html>
